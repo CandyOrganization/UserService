@@ -12,7 +12,7 @@ public class M0000_InitialMigration : Migration
             .WithColumn("email").AsString().NotNullable().Unique()
             .WithColumn("hashed_password").AsString().NotNullable()
             .WithColumn("role").AsString().NotNullable()
-            .WithColumn("employee_id").AsInt32().NotNullable();
+            .WithColumn("employee_id").AsGuid().NotNullable();
     }
 
     public override void Down()

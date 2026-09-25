@@ -4,7 +4,7 @@ namespace Models;
 
 public class DbUser
 {
-    public Guid Id { get; set; } = Guid.CreateVersion7();
+    public Guid Id { get; set; }
     public string Email { get; set; }
     public bool IsAdmin { get; set; }
     public string HashedPassword { get; set; }

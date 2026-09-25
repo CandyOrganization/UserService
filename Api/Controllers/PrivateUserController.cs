@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
 
-public class PrivateUserController : BaseAuthController
+public class PrivateUserController : BaseController
 {
     private IUserService _userService;
 
@@ -17,7 +17,7 @@ public class PrivateUserController : BaseAuthController
     [HttpGet("private/user/{userId}")]
     public async Task<IActionResult> GetUserById(Guid userId)
     {
-        var user = await _userService.GetUserById(userId);
+        var user = await _userService.GetUserByIdAsync(userId);
 
         if (user is null)
         {
@@ -30,7 +30,7 @@ public class PrivateUserController : BaseAuthController
     [HttpGet("private/user")]
     public async Task<IActionResult> GetUserById([FromQuery] string email)
     {
-        var user = await _userService.GetUserByEmail(email);
+        var user = await _userService.GetUserByEmailAsync(email);
 
         if (user is null)
         {
@@ -41,8 +41,8 @@ public class PrivateUserController : BaseAuthController
     }
 
     [HttpPost("private/user")]
-    public async Task<IActionResult> AddUser(AddUserRequest request)
+    public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
     {
-        
+        return OkOrProblem(await _userService.AddUserAsync(request));
     }
 }

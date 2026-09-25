@@ -25,6 +25,7 @@ public class UserRepository : IUserRepository
                 dbUser.HashedPassword,
                 dbUser.Email,
                 role = dbUser.Role,
+                dbUser.EmployeeId
             });
 
         var res = await _dapperContext.CommandWithResponse<DbUser>(queryObject);
