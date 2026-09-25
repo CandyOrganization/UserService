@@ -1,0 +1,12 @@
+﻿using CandyOrg.Auth.Common;
+
+namespace Contracts.Responses;
+
+public class UserResponse
+{
+    public Guid Id { get; set; } = Guid.CreateVersion7();
+    public string Email { get; set; }
+    public bool IsAdmin { get; set; }
+    public UserRoles Role { get; set; }
+    public Guid EmployeeId { get; set; }
+}
